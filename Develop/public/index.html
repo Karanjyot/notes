@@ -15,7 +15,6 @@
 
 <body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="/assets/js/index.js"></script>
 <div class ="container">
   <div class="jumbotron">
     <h1 class="display-4">Note Taker</h1>
@@ -36,16 +35,17 @@
 </html>
 
 <script type="text/javascript">
-$("#save").on("click", event =>{
+$(".save").on("click", event =>{
   event.preventDefault();
 
   var updatedNote = {
 
-    note: $("#notetext")
+    note: $(".notetext").val().trim()
 
   };
 
-  $.post("/notes", updatedNote, data =>{
+  console.log(updatedNote)
+  $.post("/", updatedNote, data =>{
     if (data) {
           alert("Yay! You are officially booked!");
         }

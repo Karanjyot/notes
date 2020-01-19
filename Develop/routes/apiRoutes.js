@@ -4,12 +4,12 @@ var notes = require("../db/db.js")
 
 module.exports = app => {
    
-   app.get("/notes", (req, res) =>{
+   app.get("/", (req, res) =>{
        res.json(notes);
    })
    
    
-    app.post("/notes", (req, res) => {
+    app.post("/", (req, res) => {
 
     var newNote = req.body        
         notes.push(newNote);
