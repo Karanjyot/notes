@@ -1,11 +1,11 @@
 const path = require("path");
 
-var notes = require("../db/db.js")
+var notes = require("../db/db")
 
-module.exports = app => {
+module.exports = function(app) {
    
    app.get("/api/notes", (req, res) =>{
-       res.json(notes);
+      return res.json(notes);
    });
    
    
@@ -17,6 +17,8 @@ module.exports = app => {
         console.log(notes)
 
         res.json(notes);
+
+
     });
 
 }

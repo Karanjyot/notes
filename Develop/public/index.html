@@ -23,14 +23,43 @@
     
     <div class="input-group">
       <div class="input-group-prepend">
-        <span class="input-group-text">Create Note</span>
+        <span class="input-group-text">Title</span>
       </div>
-      <textarea class="form-control notetext" aria-label="With textarea"></textarea>
+      <textarea class="form-control titleText" aria-label="With textarea"></textarea>
+    </div>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text "> Note</span>
+      </div>
+      <textarea class="form-control noteText" aria-label="With textarea"></textarea>
     </div>
     <button type="button" class="btn btn-success save">Save</button>
+    <a href="/notes"><button type="button" class="btn btn-success">View Notes</button></a> 
   </div>
 </div>
 </body>
 
 </html>
 
+<script type="text/javascript">
+$(".save").on("click", function(event){
+  event.preventDefault();
+
+  var updatedNote = {
+
+    title: $(".titleText").val().trim(),
+    note: $(".noteText").val().trim()
+
+  };
+
+  console.log(updatedNote)
+  
+  $.post("/api/notes", updatedNote , function(data) {
+    console.log("notes.html", data)
+
+  });
+
+});
+
+
+</script> 

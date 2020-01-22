@@ -5,10 +5,6 @@ var path = require("path");
 
 //init express
 var app = express();
-//require files
- require("./routes/htmlRoutes")(app);
- require("./routes/apiRoutes")(app);
-
 
 
 var PORT = process.env.PORT || 8080;
@@ -17,6 +13,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //get request
+
+//require files
+ require("./routes/htmlRoutes")(app);
+ require("./routes/apiRoutes")(app);
+
 
 
 

@@ -17,41 +17,28 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <div class ="container">
   <div class="jumbotron">
-    <h1 class="display-4">Note Taker</h1>
-    <p class="lead">Create notes using this web app</p>
+    <h1 class="display-4">My Notes</h1>
     <hr class="my-4">
     
-    <div class="input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text">Create Note</span>
-      </div>
-      <textarea class="form-control notetext" aria-label="With textarea"></textarea>
-    </div>
-    <button type="button" class="btn btn-success save">Save</button>
   </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h4>Notes</h4>
+    </div>
+    <div class="card-body">
+      <ul id="noteList" class="list-group"></ul>
+    </div>
+  </div>
+<a href="api/notes">Notes API</a>
 </div>
+
+
 </body>
 
 </html>
 
 <script type="text/javascript">
-$(".save").on("click", function(event){
-  event.preventDefault();
-
-  var updatedNote = {
-
-    title: $(".notetext").val().trim(),
-    text: $(".notetext").val().trim()
-
-  };
-
-  console.log(updatedNote)
-  $.post("/api/notes", updatedNote).then(function(data) {
-    console.log("notes.html", data)
-
-  })
-
-});
 
  function getNotes(){
 $.ajax({
@@ -59,6 +46,28 @@ $.ajax({
   method: "GET"
 }).then(function(notes){
   console.log(notes);
+
+  for(var i=0; i<notes.length; i++){
+
+// Get a reference to the tableList element and populate it with tables
+  var noteList = $("#noteList");
+
+// Then display the fields in the HTML (Section Name, Date, URL)
+var listItem = $("<li class='list-group-item mt-4'>");
+var deleteButton = $("<button class='btn btn-success deleteBut'>")
+$(".deleteBut").text("Delete")
+
+listItem.append(
+  $("<h2>").text("Note " + (i + 1)),
+  $("<hr>"),
+  $("<h2>").text(notes[i].title),
+  $("<h2>").text(notes[i].note),
+  deleteButton
+);
+
+noteList.append(listItem);
+  }
+
 });
 
 };

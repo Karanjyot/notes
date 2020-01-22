@@ -3,9 +3,10 @@
 var notes = [
     {
         title:"Test Title",
-        text:"Test text"
+        note:"Test text"
     }
 ];
 
 
 module.exports = notes
+
