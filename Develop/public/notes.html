@@ -55,10 +55,13 @@ $.ajax({
 // Then display the fields in the HTML (Section Name, Date, URL)
 var listItem = $("<li class='list-group-item mt-4'>");
 var deleteButton = $("<button class='btn btn-success deleteBut'>")
+  listItem.attr("data-index", i);
+  deleteButton.attr("data-index", i);
+
 $(".deleteBut").text("Delete")
 
 listItem.append(
-  $("<h2>").text("Note " + (i + 1)),
+  $("<h3>").text("Note " + (i + 1)),
   $("<hr>"),
   $("<h2>").text(notes[i].title),
   $("<h2>").text(notes[i].note),
@@ -66,12 +69,24 @@ listItem.append(
 );
 
 noteList.append(listItem);
+
+
   }
 
 });
 
 };
 
+
+// $("list-group-item").on("click", function(){
+
+// if (element.matches("button") === true) {
+//   // Get its data-index value and remove the todo element from the list
+//   var index = element.getAttribute("data-index");
+//   notes.splice(index, 1);
+// }
+// })
+
 getNotes();  
 
-</script> 
+</script>
