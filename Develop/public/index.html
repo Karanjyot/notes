@@ -34,28 +34,3 @@
 
 </html>
 
-<script type="text/javascript">
-$(".save").on("click", event =>{
-  event.preventDefault();
-
-  var updatedNote = {
-
-    note: $(".notetext").val().trim()
-
-  };
-
-  console.log(updatedNote)
-  $.post("/", updatedNote, data =>{
-    if (data) {
-          alert("Yay! You are officially booked!");
-        }
-
-        // If a table is available... tell user they on the waiting list.
-        else {
-          alert("Sorry you are on the wait list");
-        }
-  })
-
-});
-
-</script>
