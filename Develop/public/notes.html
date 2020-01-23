@@ -77,16 +77,23 @@ noteList.append(listItem);
 
 };
 
+getNotes(); 
 
-// $("list-group-item").on("click", function(){
 
-// if (element.matches("button") === true) {
-//   // Get its data-index value and remove the todo element from the list
-//   var index = element.getAttribute("data-index");
-//   notes.splice(index, 1);
-// }
-// })
+$(".deleteBut").on("click", function(){
 
-getNotes();  
+
+$.ajax({
+url: `/api/notes/notes1`,
+method: "DELETE",
+}).then(function(notes){
+
+console.log("deleted")
+})
+
+})
+
+
+ 
 
 </script>
